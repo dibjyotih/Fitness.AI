@@ -1,28 +1,89 @@
-# Setting up Fitness.AI
-  
-This is a project built with [Chef](https://chef.convex.dev) using [Convex](https://convex.dev) as its backend.
-  
-This project is connected to the Convex deployment named [`earnest-snake-905`](https://dashboard.convex.dev/d/earnest-snake-905).
-  
-## Project structure
-  
-The frontend code is in the `app` directory and is built with [Vite](https://vitejs.dev/).
-  
-The backend code is in the `convex` directory.
-  
-`npm run dev` will start the frontend and backend servers.
+# Fitness.AI
 
-## App authentication
+A real-time AI-powered workout tracking application that uses computer vision to monitor exercise form and count repetitions.
 
-Chef apps use [Convex Auth](https://auth.convex.dev/) with Anonymous auth for easy sign in. You may wish to change this before deploying your app.
+## Features
 
-## Developing and deploying your app
+- Real-time pose detection and exercise form analysis
+- Support for multiple exercises:
+  - Bicep Curls
+  - Shoulder Press
+  - Squats
+- Automatic rep counting
+- Form feedback with angle measurements
+- User authentication
+- Progress tracking
+- Real-time visual feedback
 
-Check out the [Convex docs](https://docs.convex.dev/) for more information on how to develop with Convex.
-* If you're new to Convex, the [Overview](https://docs.convex.dev/understanding/) is a good place to start
-* Check out the [Hosting and Deployment](https://docs.convex.dev/production/) docs for how to deploy your app
-* Read the [Best Practices](https://docs.convex.dev/understanding/best-practices/) guide for tips on how to improve you app further
+## Tech Stack
 
-## HTTP API
+- **Frontend**: React + Vite + TailwindCSS
+- **Backend**: Convex (real-time database)
+- **Computer Vision**: MediaPipe Pose Detection
+- **Authentication**: Convex Auth
+- **State Management**: React + Convex Hooks
 
-User-defined http routes are defined in the `convex/router.ts` file. We split these routes into a separate file from `convex/http.ts` to allow us to prevent the LLM from modifying the authentication routes.
+## Prerequisites
+
+- Node.js (v16 or higher)
+- NPM
+- Webcam access
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+## Usage
+
+1. Sign in or create an account
+2. Select an exercise and set your target reps
+3. Allow camera access when prompted
+4. Position yourself in view of the camera
+5. Start exercising - the app will track your form and count reps automatically
+
+## Exercise Form Detection
+
+The application uses MediaPipe Pose Detection to track key body points and calculate angles between joints. This enables:
+
+- Real-time form analysis
+- Accurate rep counting
+- Visual feedback on proper form
+- Angle measurements for precise tracking
+
+## Authentication
+
+The app uses Convex Auth for user authentication with support for:
+- Email/Password login
+- Anonymous sign-in
+- Session management
+
+## Project Structure
+
+```
+├── convex/                 # Backend Convex functions and schema
+├── src/
+│   ├── components/        # React components
+│   ├── lib/              # Utility functions and pose detection logic
+│   └── App.tsx           # Main application component
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## License
+
+MIT
