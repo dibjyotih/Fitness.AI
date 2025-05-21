@@ -84,6 +84,4 @@ The app uses Convex Auth for user authentication with support for:
 4. Push to the branch
 5. Open a Pull Request
 
-## License
 
-MIT
